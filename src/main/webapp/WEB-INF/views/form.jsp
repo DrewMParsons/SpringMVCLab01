@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib  uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
 
@@ -10,21 +12,24 @@
 </head>
 <body>
 	<div class="container">
-		<form action="process-form" method="POST">
+		<form:form action="process-form" method="POST" modelAttribute="user">
 			<div class="field">
 				<label for="first_name">First Name</label> 
-				<input id="fName" name="fName"
+				<form:input id="fName" path="fName"
 					type="text" placeholder="Enter your first name" />
+				<form:errors path="fName" cssClass="error"/>
 			</div>
 			<div class="field">
 				<label for="last_name">Last Name</label> 
-				<input id="lName" name="lName"
+				<form:input id="lName" path="lName"
 					type="text" placeholder="Enter your last name" />
+				<form:errors path="lName" cssClass="error"/>	
 			</div>
 			<div class="field">
 				<label for="username">Username</label> 
-				<input id="username" name="username"
+				<form:input id="username" path="username"
 					type="text" placeholder="Enter your Username" />
+				<form:errors path="username" cssClass="error"/>
 			</div>
 			<div class="field">
 				<label for="gender">Gender</label> 
@@ -37,40 +42,46 @@
 			</div>
 			<div class="field">
 				<label for="phone">Phone</label> 
-				<input id="phone" name="contactInfo.phone"
-					type="text" placeholder="Enter your Phone Number" />
+				<form:input id="phone" path="contactInfo.phone"
+					type="number" placeholder="Enter your Phone Number" />
+					<form:errors cssClass="error" path="contactInfo.phone" />
 			</div>
 			<div class="field">
 				<label for="email">Email</label> 
-				<input id="email" name="contactInfo.email"
+				<form:input id="email" path="contactInfo.email"
 					type="text" placeholder="Enter your Email" />
+					<form:errors cssClass="error" path="contactInfo.email" />
 			</div>
 			<div class="field">
 				<label for="linkedInURL">linkedIn URL</label> 
-				<input id="linkedInURL" name="contactInfo.linkedInURL"
+				<form:input id="linkedInURL" path="contactInfo.linkedInURL"
 					type="text" placeholder="Enter your linkedIn URL" />
+	
 			</div>
 			
 			<div class="field">
 				<label for="ssn">SSN</label> 
-				<input id="ssn" name="privateInfo.ssn"
-					type="password" placeholder="Enter your SSN" />
+				<form:input id="ssn" path="privateInfo.ssn"
+					type="number" placeholder="Enter your SSN" />
+					<form:errors cssClass="error" path="privateInfo.ssn" />
 			</div>
 			<div class="field">
 				<label for="ccn">Credit Card</label> 
-				<input id="ccn" name="privateInfo.ccn"
-					type="password" placeholder="Enter your credit card" />
+				<form:input id="ccn" path="privateInfo.ccn"
+					type="number" placeholder="Enter your credit card" />
+					<form:errors cssClass="error" path="privateInfo.ccn" />
 			</div>
 			<div class="field">
 				<label for="dob">Date of Birth</label> 
-				<input id="dob" name="privateInfo.dob"
+				<form:input id="dob" path="privateInfo.dob"
 					type="date" placeholder="Enter your Date of Birth" />
+					<form:errors cssClass="error" path="privateInfo.dob" />
 			</div>
 			<div class="btn">
 				<input id="sub" name="submit"
 					type="submit" value="Submit Name" />
 			</div>
-		</form>
+		</form:form>
 	</div>
 </body>
 </html>

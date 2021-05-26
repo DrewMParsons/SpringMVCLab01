@@ -1,29 +1,51 @@
 package com.springmvc.model;
-
+//DONE:credit Card Number - optional, must be 10-11 digit number if provided
+//DONE:Dob required, must be between 1900-present
+//DONE: Security Number - required, must be 9 digit number
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.springmvc.customannotation.DateConstraint;
+import com.springmvc.customannotation.EmptyOrRange;
 
 public class PrivateInfo
 {
-	private long ssn;
-	private long ccn;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	
+	@NotNull
+	@EmptyOrRange(min=9,max=9)
+	private Long ssn;
+	
+	
+	
+	@EmptyOrRange(min=10,max=11)
+	private Long ccn;
+	
+	@NotNull
+	@DateTimeFormat(pattern="yyyy-MM-dd") //for modern browsers
+	@DateConstraint
+	//@Past checks if date is in the past(includes today)
 	private Date dob;
-	public long getSsn()
+	
+	public Long getSsn()
 	{
 		return ssn;
 	}
-	public void setSsn(long ssn)
+	public void setSsn(Long ssn)
 	{
 		this.ssn = ssn;
 	}
-	public long getCcn()
+	public Long getCcn()
 	{
 		return ccn;
 	}
-	public void setCcn(long ccn)
+	public void setCcn(Long ccn)
 	{
 		this.ccn = ccn;
 	}

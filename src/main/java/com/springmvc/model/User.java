@@ -1,12 +1,38 @@
 package com.springmvc.model;
+//DONE:First Name - required, min length=2
+//DONE:Last Name - required, min length=2
+//DONE:User Name - required, must contain only letters and numbers
+// TODO :LinkedIn URL - optional
+
+
+
+
+import javax.validation.Valid;
+
+//TODO:error messages have to be in red color
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class User
 {
+	
+	@Size(min=2,message="Name must be longer than {min} characters")
 	private String fName;
+	
+	
+	@Size(min=2,message="Name must be longer than {min} characters")
 	private String lName;
+	
+	@NotEmpty(message="This field cannot be empty")
+	@Pattern(regexp="^[a-zA-Z0-9]*$",message="Username must only be numbers and/or letters")
 	private String username;
 	private String gender;
+	@Valid
 	private ContactInfo contactInfo;
+	@Valid
 	private PrivateInfo privateInfo;
 	public String getfName()
 	{
